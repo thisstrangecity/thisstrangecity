@@ -1,0 +1,32 @@
+apply plugin: 'java'
+apply from: 'external-dependencies.gradle'
+apply from: 'ide-support.gradle'
+apply plugin: 'idea-scala-project'
+
+allprojects {
+    repositories {
+        mavenCentral()
+    }
+
+    sourceCompatibility = '1.7'
+    targetCompatibility = '1.7'
+}
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath rootProject.fileTree('gradle-plugins')
+    }
+}
+
+dependencies {
+    scalaTools scala.compiler, scala.library
+    scalaApi scala.library
+}
+
+task everything(type: GradleBuild) {
+    description = 'Build Everything'
+    tasks = ['build', 'jstest', 'localDeploy']
+}

@@ -1,0 +1,7 @@
+task jstest(type: Exec) {
+    commandLine 'grunt'
+}
+
+task server(type: Exec) {
+  commandLine 'grunt', 'server'
+}

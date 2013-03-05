@@ -1,0 +1,28 @@
+apply plugin: 'scala'
+apply plugin: 'idea-scala-facet'
+
+
+dependencies {
+    scalaApi scala.library
+    compile scala.library, scala.compiler
+    testCompile junit, scalatest, selenium, testng
+}
+
+task functionalTest(type: Test) {
+
+    testReport = true
+
+    useTestNG {
+
+        suiteXmlBuilder().suite(name: 'web-ui-functional-tests') {
+
+            test(name: "all") {
+                packages {
+                    'package'(name: 'com.thisstrangecity.webui.functionalTests.*')
+                }
+                excludeGroups groupsToExclude
+            }
+
+        }
+    }
+}
