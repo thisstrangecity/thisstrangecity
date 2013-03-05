@@ -1,12 +1,10 @@
 language: scala
-scala:
-   - 2.8.2
+scala:  
    - 2.9.2
 
 jdk:
    - oraclejdk7
-   - openjdk7
-   - openjdk6
+   - openjdk7 
 
 node_js:
    - 0.4
